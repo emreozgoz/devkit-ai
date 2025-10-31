@@ -30,7 +30,7 @@ export class SidebarProvider implements vscode.WebviewViewProvider {
           break;
         }
         case 'openSettings': {
-          vscode.commands.executeCommand('workbench.action.openSettings', '@ext:your-publisher-name.devkit-ai');
+          vscode.commands.executeCommand('workbench.action.openSettings', '@ext:devkit-ai.devkit-ai');
           break;
         }
         case 'checkApiKey': {

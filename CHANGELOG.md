@@ -2,6 +2,23 @@
 
 All notable changes to the "devkit-ai" extension will be documented in this file.
 
+## [0.1.2] - 2025-01-31
+
+### Fixed
+- Fixed settings link - now properly opens DevKit AI settings
+- Corrected extension ID in settings commands
+
+## [0.1.1] - 2025-01-31
+
+### Fixed
+- Fixed missing dependencies issue in marketplace package
+- Extension now properly bundles @anthropic-ai/sdk
+- Improved activation events for better startup performance
+
+### Changed
+- Updated .vscodeignore to include runtime dependencies
+- Changed activation event to "onStartupFinished" for reliable loading
+
 ## [0.1.0] - 2025-01-31
 
 ### Added

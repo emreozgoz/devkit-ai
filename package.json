@@ -2,8 +2,8 @@
   "name": "devkit-ai",
   "displayName": "DevKit AI - Developer Productivity Tools",
   "description": "AI-powered commit messages, README generation, and documentation tools with Turkish & English support",
-  "version": "0.1.0",
-  "publisher": "emreozgoz",
+  "version": "0.1.2",
+  "publisher": "devkit-ai",
   "engines": {
     "vscode": "^1.80.0"
   },
@@ -34,7 +34,7 @@
   "homepage": "https://github.com/emreozgoz/devkit-ai#readme",
   "license": "MIT",
   "activationEvents": [
-    "onView:devkit-sidebar"
+    "onStartupFinished"
   ],
   "main": "./out/extension.js",
   "contributes": {

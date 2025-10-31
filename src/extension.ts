@@ -42,7 +42,7 @@ export function activate(context: vscode.ExtensionContext) {
         label: '$(gear) Settings',
         description: 'Configure DevKit AI',
         command: 'workbench.action.openSettings',
-        args: '@ext:your-publisher-name.devkit-ai'
+        args: '@ext:devkit-ai.devkit-ai'
       }
     ];
 
