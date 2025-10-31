@@ -1,0 +1,187 @@
+{
+  "name": "devkit-ai",
+  "displayName": "DevKit AI - Developer Productivity Tools",
+  "description": "AI-powered commit messages, README generation, and documentation tools with Turkish & English support",
+  "version": "0.1.0",
+  "publisher": "emreozgoz",
+  "icon": "resources/icon.png",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other",
+    "SCM Providers",
+    "Programming Languages"
+  ],
+  "keywords": [
+    "ai",
+    "commit",
+    "readme",
+    "documentation",
+    "productivity",
+    "git",
+    "claude",
+    "turkish",
+    "automation",
+    "anthropic"
+  ],
+  "activationEvents": [
+    "onView:devkit-sidebar"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "devkit-sidebar-view",
+          "title": "DevKit AI",
+          "icon": "$(robot)"
+        }
+      ]
+    },
+    "views": {
+      "devkit-sidebar-view": [
+        {
+          "type": "webview",
+          "id": "devkit-sidebar",
+          "name": "DevKit AI",
+          "icon": "$(robot)",
+          "contextualTitle": "DevKit AI"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "devkit.commit.generate",
+        "title": "Generate Commit Message with AI",
+        "category": "DevKit",
+        "icon": "$(git-commit)"
+      },
+      {
+        "command": "devkit.readme.generate",
+        "title": "Generate/Improve README with AI",
+        "category": "DevKit",
+        "icon": "$(file-text)"
+      },
+      {
+        "command": "devkit.showMenu",
+        "title": "Open DevKit Menu",
+        "category": "DevKit",
+        "icon": "$(tools)"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "devkit.commit.generate",
+        "key": "ctrl+shift+c",
+        "mac": "cmd+shift+c",
+        "when": "scmProvider == git"
+      },
+      {
+        "command": "devkit.readme.generate",
+        "key": "ctrl+shift+r",
+        "mac": "cmd+shift+r"
+      },
+      {
+        "command": "devkit.showMenu",
+        "key": "ctrl+shift+d",
+        "mac": "cmd+shift+d"
+      }
+    ],
+    "menus": {
+      "scm/title": [
+        {
+          "command": "devkit.commit.generate",
+          "group": "navigation",
+          "when": "scmProvider == git"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "devkit.readme.generate",
+          "when": "explorerResourceIsFolder",
+          "group": "devkit@1"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "devkit.commit.generate",
+          "when": "scmProvider == git"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "DevKit AI",
+      "properties": {
+        "devkit.apiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Your Anthropic API Key",
+          "markdownDescription": "Get your API key from [console.anthropic.com](https://console.anthropic.com)",
+          "order": 1
+        },
+        "devkit.language": {
+          "type": "string",
+          "enum": ["English", "Turkish"],
+          "default": "English",
+          "description": "Preferred language for generated content",
+          "order": 2
+        },
+        "devkit.commit.includeEmoji": {
+          "type": "boolean",
+          "default": false,
+          "description": "Include emoji in commit messages",
+          "order": 3
+        },
+        "devkit.commit.conventionalFormat": {
+          "type": "boolean",
+          "default": true,
+          "description": "Use conventional commit format (type(scope): description)",
+          "order": 4
+        },
+        "devkit.readme.includeBadges": {
+          "type": "boolean",
+          "default": true,
+          "description": "Include badges in generated README",
+          "order": 5
+        },
+        "devkit.readme.includeTableOfContents": {
+          "type": "boolean",
+          "default": true,
+          "description": "Include table of contents in README",
+          "order": 6
+        },
+        "devkit.model": {
+          "type": "string",
+          "enum": [
+            "claude-sonnet-4-5-20250929",
+            "claude-opus-4-20250514"
+          ],
+          "default": "claude-sonnet-4-5-20250929",
+          "description": "Claude model to use",
+          "order": 7
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.0"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "^20.0.0",
+    "@vscode/test-electron": "^2.3.0",
+    "typescript": "^5.0.0",
+    "eslint": "^8.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0"
+  }
+}
