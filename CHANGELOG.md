@@ -2,6 +2,17 @@
 
 All notable changes to the "devkit-ai" extension will be documented in this file.
 
+## [0.1.4] - 2025-01-31
+
+### Fixed
+- Fixed extension icon not appearing in marketplace
+- Added icon field to package.json
+
+## [0.1.3] - 2025-01-31
+
+### Added
+- Custom extension icon
+
 ## [0.1.2] - 2025-01-31
 
 ### Fixed
